@@ -5,6 +5,8 @@ const mobileMenu = document.querySelector('.mobile-menu');
 
 const menuCarIcon = document.querySelector('.navbar-shopping-cart');
 const asideProduct = document.querySelector('.product-detail');
+const cardsContainer = document.querySelector('.cards-container');
+
 
 
 //Creamos la llamada del evento
@@ -31,3 +33,72 @@ function toggleCarIconMenu(){
     mobileMenu.classList.add('inactive');
     asideProduct.classList.toggle('inactive');
 } 
+
+
+/*Product List*/
+
+const productList = [];
+
+productList.push({
+    name:'Bike',
+    price: 120,
+    image: 'https://picsum.photos/200/300?random=1'
+});
+productList.push({
+    name:'Pantalla',
+    price: 340,
+    image: 'https://picsum.photos/200/300?random=2'
+});
+productList.push({
+    name:'Compu',
+    price: 750,
+    image: 'https://picsum.photos/200/300?random=3'
+});
+productList.push({
+    name:'Compu',
+    price: 750,
+    image: 'https://picsum.photos/200/300?random=4'
+});
+productList.push({
+    name:'Compu',
+    price: 750,
+    image: 'https://picsum.photos/200/300?random=5'
+});
+
+/*Recorrer el array*/
+
+for(product of productList){
+    const productCard = document.createElement('div');
+    productCard.classList.add('product-card');
+
+    //product={name,price,image} -> product.image
+    const productImg = document.createElement('img');
+    productImg.setAttribute('src', product.image);
+
+    const productInfo = document.createElement('div');
+    productInfo.classList.add('product-info');
+
+        const productHoleDiv = document.createElement('div');
+        const productPrice = document.createElement('p');
+        productPrice.innerText = '$' + product.price;
+        const productName = document.createElement('p');
+        productName.innerText = '$' + product.name;
+
+        const productInfoFigure = document.createElement('figure');
+        const productImgCart = document.createElement('img');
+        productImgCart.setAttribute('src','./icons/bt_add_to_cart.svg');
+
+    
+    /*Ordenamiento de los elementos*/
+    productHoleDiv.append(productPrice,productName);
+    productInfoFigure.appendChild(productImgCart);
+    
+    productInfo.appendChild(productHoleDiv);
+    productInfo.appendChild(productInfoFigure);
+
+    productCard.appendChild(productImg);
+    productCard.appendChild(productInfo);
+
+    cardsContainer.appendChild(productCard);
+
+}
