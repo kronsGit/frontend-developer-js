@@ -4,7 +4,7 @@ const menuHamIcon = document.querySelector('.menu');
 const mobileMenu = document.querySelector('.mobile-menu');
 
 const menuCarIcon = document.querySelector('.navbar-shopping-cart');
-const asideProduct = document.querySelector('.product-detail');
+const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
 const cardsContainer = document.querySelector('.cards-container');
 
 
@@ -25,13 +25,13 @@ function toggleDesktopMenu(){
 
 //Esto es para quitar y poner una clase con JS
 function toggleMobilepMenu(){
-    asideProduct.classList.add('inactive');
+    shoppingCartContainer.classList.add('inactive');
     mobileMenu.classList.toggle('inactive');
 }
 
 function toggleCarIconMenu(){
     mobileMenu.classList.add('inactive');
-    asideProduct.classList.toggle('inactive');
+    shoppingCartContainer.classList.toggle('inactive');
 } 
 
 
