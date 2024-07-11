@@ -2,9 +2,12 @@ const menuEmail = document.querySelector('.navbar-email'); //Seleccionamos la el
 const desktopMenu = document.querySelector('.desktop-menu'); //Seleccionamos el elemento que le agregaremos la clase
 const menuHamIcon = document.querySelector('.menu');
 const mobileMenu = document.querySelector('.mobile-menu');
+const productDetailCloseIcon = document.querySelector('.product-detail-close')
+
 
 const menuCarIcon = document.querySelector('.navbar-shopping-cart');
 const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
+const productDetailContainer = document.querySelector('#productDetail');
 const cardsContainer = document.querySelector('.cards-container');
 
 
@@ -13,13 +16,15 @@ const cardsContainer = document.querySelector('.cards-container');
 
 menuEmail.addEventListener('click', toggleDesktopMenu); 
 menuHamIcon.addEventListener('click', toggleMobilepMenu); 
-menuCarIcon.addEventListener('click', toggleCarIconMenu)
+menuCarIcon.addEventListener('click', toggleCarIconMenu);
+productDetailCloseIcon.addEventListener('click', closeProductDetailAside);
 
 //Con esta linea se escucha el evento click y se activa la funcion que crearemos
 
 function toggleDesktopMenu(){
   
     desktopMenu.classList.toggle('inactive');
+    closeProductDetailAside();
     //Aqui le estamos diciendo al elemento que agrego o se quite la clase "inactive"
 }
 
@@ -27,12 +32,25 @@ function toggleDesktopMenu(){
 function toggleMobilepMenu(){
     shoppingCartContainer.classList.add('inactive');
     mobileMenu.classList.toggle('inactive');
+
+    closeProductDetailAside();
 }
 
 function toggleCarIconMenu(){
     mobileMenu.classList.add('inactive');
     shoppingCartContainer.classList.toggle('inactive');
+    closeProductDetailAside();
 } 
+
+function openProductDetailAside(){
+    shoppingCartContainer.classList.add('inactive');
+    productDetailContainer.classList.remove('inactive');
+    
+}
+
+function closeProductDetailAside(){
+    productDetailContainer.classList.add('inactive');
+}
 
 
 /*Product List*/
@@ -74,6 +92,7 @@ for(product of productList){
     //product={name,price,image} -> product.image
     const productImg = document.createElement('img');
     productImg.setAttribute('src', product.image);
+    productImg.addEventListener('click', openProductDetailAside);
 
     const productInfo = document.createElement('div');
     productInfo.classList.add('product-info');
